@@ -7,6 +7,7 @@ public class GewinnModel {
     private int rundenErgebnis;
 
     public GewinnModel() {
+        // Standard-Werte werden gesetzt
         this.gesamtPunkte = 0;
         this.spielerZahl = 30;
         this.computerZahl = 0;
@@ -30,21 +31,21 @@ public class GewinnModel {
     }
 
     public void berechneComputerZahl() {
-        this.computerZahl = (int) ((Math.random() * 9) + 1);
+        this.computerZahl = (int) ((Math.random() * 9) + 1); // Zufallszahl wird für den Computer berechnet
     }
 
     public void berechneRunde(int spielerZahl) {
-        if(spielerZahl > 9 || spielerZahl < 1) {
+        if(spielerZahl > 9 || spielerZahl < 1) { // Prüfen für gültige Zahlen
             return;
         }
-        int differenz = this.spielerZahl - this.computerZahl;
+        int differenz = this.spielerZahl - this.computerZahl; // die Berechnung der Differenz
         if(differenz == 0) {
             rundenErgebnis = 20;
         }
-        if(differenz == 1 || differenz == -1) {
+        if(differenz == 1 || differenz == -1) { // wenn die Differenz genau 1 ist
             rundenErgebnis = 5;
         } else {
-            rundenErgebnis = -10;
+            rundenErgebnis = -10; // Die Differenz darf nicht über 1 sein, sonst werden 10 Punkte abgezogen
         }
         this.gesamtPunkte += this.rundenErgebnis;
     }
