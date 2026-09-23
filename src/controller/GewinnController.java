@@ -10,8 +10,8 @@ public class GewinnController implements ActionListener {
     private GewinnPanel panel;
 
     public GewinnController() {
-        this.model = model;
-        this.panel = panel;
+        this.model = new GewinnModel();
+        this.panel = new GewinnPanel();
         GewinnFrame frame = new GewinnFrame;
     }
 
