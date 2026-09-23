@@ -19,6 +19,11 @@ public class GewinnController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         int spielerZahl = 0;
         if (e.getActionCommand().equals("Eingabe") {
+            try {
+                spielerZahl = this.panel.getSpielerZahl();
+            } catch(NumberFormatException exc) {
+                return;
+            }
             spielerZahl = this.panel.getSpielerZahl();
             if(spielerZahl < 1 || spielerZahl > 9) {
                 return;
@@ -35,6 +40,9 @@ public class GewinnController implements ActionListener {
             this.panel.reset();
             break;
         }
+    }
+    public static void main(String[] args) {
+        new GewinnController(model, panel);
     }
 
 }
