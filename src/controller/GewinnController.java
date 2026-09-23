@@ -9,22 +9,21 @@ public class GewinnController implements ActionListener {
     private GewinnModel model;
     private GewinnPanel panel;
 
-    public GewinnController(GewinnModel model, GewinnPanel panel) {
+    public GewinnController() {
         this.model = model;
         this.panel = panel;
-        this.panel.addEnterListener(this);
+        GewinnFrame frame = new GewinnFrame;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         int spielerZahl = 0;
-        if (e.getActionCommand().equals("Eingabe") {
+        if (e.getActionCommand().equals("Eingabe")) {
             try {
                 spielerZahl = this.panel.getSpielerZahl();
             } catch(NumberFormatException exc) {
                 return;
             }
-            spielerZahl = this.panel.getSpielerZahl();
             if(spielerZahl < 1 || spielerZahl > 9) {
                 return;
             }
@@ -33,12 +32,10 @@ public class GewinnController implements ActionListener {
             this.panel.zeigeComputerZahl(model.getComputerZahl());
             this.panel.zeigeErgebnis(model.getRundenErgebnis());
             this.panel.zeigeGesamtPunkte(model.getGesamtPunkte());
-            break;
 
         }
-        if(e.getActionCommand().equals("Reset"))) {
+        if(e.getActionCommand().equals("Reset")) {
             this.panel.reset();
-            break;
         }
     }
     public static void main(String[] args) {
