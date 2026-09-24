@@ -38,6 +38,7 @@ public class GewinnModel {
         if(spielerZahl > 9 || spielerZahl < 1) { // Prüfen für gültige Zahlen
             return;
         }
+        this.spielerZahl = spielerZahl;
         int differenz = this.spielerZahl - this.computerZahl; // die Berechnung der Differenz
         if(differenz == 0) {
             rundenErgebnis = 20;
@@ -54,6 +55,7 @@ public class GewinnModel {
         if (gesamtPunkte >= 100) {
             return true;
         }
+        return false;
     }
     public boolean hatVerloren() {
         if(gesamtPunkte <= 0) {

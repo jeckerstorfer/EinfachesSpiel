@@ -2,8 +2,10 @@ package controller;
 
 import model.GewinnModel;
 import view.GewinnPanel;
+import view.GewinnFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 public class GewinnController implements ActionListener {
 
     private GewinnModel model;
@@ -11,8 +13,8 @@ public class GewinnController implements ActionListener {
 
     public GewinnController() {
         this.model = new GewinnModel();
-        this.panel = new GewinnPanel();
-        GewinnFrame frame = new GewinnFrame;
+        this.panel = new GewinnPanel(this);
+        GewinnFrame frame = new GewinnFrame(panel);
     }
 
     @Override
@@ -21,25 +23,24 @@ public class GewinnController implements ActionListener {
         if (e.getActionCommand().equals("Eingabe")) {
             try {
                 spielerZahl = this.panel.getSpielerZahl();
-            } catch(NumberFormatException exc) {
+            } catch (NumberFormatException exc) {
                 return;
             }
-            if(spielerZahl < 1 || spielerZahl > 9) {
+            if (spielerZahl < 1 || spielerZahl > 9) {
                 return;
             }
             this.model.berechneComputerZahl();
             this.model.berechneRunde(spielerZahl);
-            this.panel.zeigeComputerZahl(model.getComputerZahl());
-            this.panel.zeigeErgebnis(model.getRundenErgebnis());
-            this.panel.zeigeGesamtPunkte(model.getGesamtPunkte());
-
+            this.panel.showComputerZahl(model.getComputerZahl());
+            this.panel.showErgebnis(model.getRundenErgebnis());
+            this.panel.showGesamtPunkte(model.getGesamtPunkte());
         }
-        if(e.getActionCommand().equals("Reset")) {
+        if (e.getActionCommand().equals("Reset")) {
             this.panel.reset();
         }
     }
-    public static void main(String[] args) {
-        new GewinnController(model, panel);
-    }
 
+    public static void main(String[] args) {
+        new GewinnController();
+    }
 }
