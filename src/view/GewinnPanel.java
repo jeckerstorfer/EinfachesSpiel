@@ -96,4 +96,17 @@ public class GewinnPanel extends JPanel {
         spielerZahlTextField.setEnabled(true);
         nochMalButton.setEnabled(false);
     }
+
+    public void faerbeLabels(int rundenErgebnis) {
+        Color farbe;
+        if (rundenErgebnis > 0) {
+            farbe = Color.GREEN;
+        } else if (rundenErgebnis < 0) {
+            farbe = Color.RED;
+        } else {
+            farbe = Color.WHITE;
+        }
+        ergebnisLabel.setBackground(farbe);
+        gesamtPunktsLabel.setBackground(farbe);
+    }
 }
