@@ -8,8 +8,8 @@ public class GewinnModel {
 
     public GewinnModel() {
         // Standard-Werte werden gesetzt
-        this.gesamtPunkte = 0;
-        this.spielerZahl = 30;
+        this.gesamtPunkte = 30;
+        this.spielerZahl = 0;
         this.computerZahl = 0;
         this.rundenErgebnis = 0;
     }
@@ -42,8 +42,7 @@ public class GewinnModel {
         int differenz = this.spielerZahl - this.computerZahl; // die Berechnung der Differenz
         if(differenz == 0) {
             rundenErgebnis = 20;
-        }
-        if(differenz == 1 || differenz == -1) { // wenn die Differenz genau 1 ist
+        } else if(differenz == 1 || differenz == -1) { // wenn die Differenz genau 1 ist
             rundenErgebnis = 5;
         } else {
             rundenErgebnis = -10; // Die Differenz darf nicht über 1 sein, sonst werden 10 Punkte abgezogen

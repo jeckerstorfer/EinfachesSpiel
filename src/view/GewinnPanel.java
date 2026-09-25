@@ -85,4 +85,17 @@ public class GewinnPanel extends JPanel {
         computerZahlTextField.setText("");
         ergebnisLabel.setText("Tippe eine Zahl von 1 bis 9");
     }
+
+    public void faerbeLabels(int rundenErgebnis) {
+        Color farbe;
+        if (rundenErgebnis > 0) {
+            farbe = Color.GREEN;
+        } else if (rundenErgebnis < 0) {
+            farbe = Color.RED;
+        } else {
+            farbe = Color.WHITE;
+        }
+        ergebnisLabel.setBackground(farbe);
+        gesamtPunktsLabel.setBackground(farbe);
+    }
 }
