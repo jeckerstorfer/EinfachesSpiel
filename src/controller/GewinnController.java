@@ -34,9 +34,11 @@ public class GewinnController implements ActionListener {
             this.panel.showComputerZahl(model.getComputerZahl());
             this.panel.showErgebnis(model.getRundenErgebnis());
             this.panel.showGesamtPunkte(model.getGesamtPunkte());
+            this.panel.sperreEingabe();
         }
         if (e.getActionCommand().equals("Reset")) {
             this.panel.reset();
+            this.panel.entsperreEingabe();
         }
     }
 

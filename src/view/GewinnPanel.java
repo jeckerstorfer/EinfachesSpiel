@@ -55,6 +55,7 @@ public class GewinnPanel extends JPanel {
         mitte.add(computerSpalte);
         add(mitte, BorderLayout.CENTER);
         nochMalButton = new JButton("Noch einmal!");
+        nochMalButton.setEnabled(false);
         JPanel buttonReihe = new JPanel();
         buttonReihe.add(nochMalButton);
         add(buttonReihe, BorderLayout.SOUTH);
@@ -84,5 +85,15 @@ public class GewinnPanel extends JPanel {
         spielerZahlTextField.setText("");
         computerZahlTextField.setText("");
         ergebnisLabel.setText("Tippe eine Zahl von 1 bis 9");
+    }
+
+    public void sperreEingabe() {
+        spielerZahlTextField.setEnabled(false);
+        nochMalButton.setEnabled(true);
+    }
+
+    public void entsperreEingabe() {
+        spielerZahlTextField.setEnabled(true);
+        nochMalButton.setEnabled(false);
     }
 }
