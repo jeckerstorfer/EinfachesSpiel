@@ -2,6 +2,11 @@ package view;
 
 import javax.swing.*;
 
+/**
+ * @author Julius Eckerstorfer
+ * @version 2026-09-25
+ * Das Frame des Spieles
+ */
 public class GewinnFrame extends JFrame {
     public GewinnFrame(GewinnPanel panel) {
         super("Zahlen-Gewinnspiel");

@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * @author Julius Eckerstorfer
+ * @version 2026-09-25
+ * Die Logik des Spieles
+ */
 public class GewinnModel {
     private int gesamtPunkte;
     private int spielerZahl;
@@ -7,7 +12,7 @@ public class GewinnModel {
     private int rundenErgebnis;
 
     public GewinnModel() {
-        // Standard-Werte werden gesetzt
+        // Standardwerte werden gesetzt
         this.gesamtPunkte = 30;
         this.spielerZahl = 0;
         this.computerZahl = 0;
@@ -33,9 +38,11 @@ public class GewinnModel {
     public void berechneComputerZahl() {
         this.computerZahl = (int) ((Math.random() * 9) + 1); // Zufallszahl wird für den Computer berechnet
     }
-
+    /**
+     * die Methode für die Berechnung der Runde
+     */
     public void berechneRunde(int spielerZahl) {
-        if(spielerZahl > 9 || spielerZahl < 1) { // Prüfen für gültige Zahlen
+        if(spielerZahl > 9 || spielerZahl < 1) { // prüfen für gültige Zahlen
             return;
         }
         this.spielerZahl = spielerZahl;
@@ -50,12 +57,21 @@ public class GewinnModel {
         this.gesamtPunkte += this.rundenErgebnis;
     }
 
+    /**
+     * Prüfung ob Runde gewonnen wurde
+     * @return falls gewonnen wird true zurückgegeben
+     */
     public boolean hatGewonnen() {
         if (gesamtPunkte >= 100) {
             return true;
         }
         return false;
     }
+
+    /**
+     * Prüfung ob verloren wurde
+     * @return falls verloren wird true zurückgegeben
+     */
     public boolean hatVerloren() {
         if(gesamtPunkte <= 0) {
             return true;
