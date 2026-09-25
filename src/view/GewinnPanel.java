@@ -1,7 +1,6 @@
 package view;
 
 import controller.GewinnController;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -14,20 +13,17 @@ public class GewinnPanel extends JPanel {
 
     public GewinnPanel(GewinnController controller) {
         setLayout(new BorderLayout());
-
         JPanel oben = new JPanel(new GridLayout(1, 2));
         JPanel ergebnisSpalte = new JPanel(new GridLayout(2, 1));
         JLabel ergebnisText = new JLabel("Rundenergebnis", JLabel.CENTER);
         this.ergebnisLabel = new JLabel("Tippe eine Zahl von 1 bis 9", JLabel.CENTER);
         ergebnisSpalte.add(ergebnisText);
         ergebnisSpalte.add(ergebnisLabel);
-
         this.gesamtPunktsLabel = new JLabel("30", JLabel.CENTER);
         JPanel punkteSpalte = new JPanel(new GridLayout(2, 1));
         JLabel punkteText = new JLabel("Gesamtpunkte", JLabel.CENTER);
         punkteSpalte.add(punkteText);
         punkteSpalte.add(gesamtPunktsLabel);
-
         ergebnisSpalte.setOpaque(true);
         punkteSpalte.setOpaque(true);
         this.gesamtPunktsLabel.setOpaque(true);
@@ -36,50 +32,32 @@ public class GewinnPanel extends JPanel {
         punkteSpalte.setBackground(Color.WHITE);
         this.gesamtPunktsLabel.setBackground(Color.WHITE);
         this.ergebnisLabel.setBackground(Color.WHITE);
-
         oben.add(ergebnisSpalte);
         oben.add(punkteSpalte);
         add(oben, BorderLayout.NORTH);
-
-        JPanel unten = new JPanel(new BorderLayout());
-
-        JPanel eingabeSpalte = new JPanel();
-        eingabeSpalte.setLayout(new BoxLayout(eingabeSpalte, BoxLayout.Y_AXIS));
-        JLabel deineZahlLabel = new JLabel("Deine Zahl:");
-        deineZahlLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        eingabeSpalte.add(deineZahlLabel);
-        this.spielerZahlTextField = new JTextField(4);
+        JPanel mitte = new JPanel(new GridLayout(1, 2));
+        JPanel eingabeSpalte = new JPanel(new BorderLayout());
+        JLabel eingabeText = new JLabel("Deine Zahl:", JLabel.CENTER);
+        eingabeSpalte.add(eingabeText, BorderLayout.NORTH);
+        this.spielerZahlTextField = new JTextField();
         this.spielerZahlTextField.setHorizontalAlignment(JTextField.CENTER);
-        this.spielerZahlTextField.setFont(spielerZahlTextField.getFont().deriveFont(36f));
-        this.spielerZahlTextField.setMaximumSize(new Dimension(80, 60));
-        this.spielerZahlTextField.setAlignmentX(Component.CENTER_ALIGNMENT);
-        eingabeSpalte.add(spielerZahlTextField);
-
-        JPanel computerSpalte = new JPanel();
-        computerSpalte.setLayout(new BoxLayout(computerSpalte, BoxLayout.Y_AXIS));
-        JLabel computerLabel = new JLabel("Computer:");
-        computerLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        computerSpalte.add(computerLabel);
-        this.computerZahlTextField = new JTextField(4);
+        this.spielerZahlTextField.setFont(spielerZahlTextField.getFont().deriveFont(48f));
+        eingabeSpalte.add(spielerZahlTextField, BorderLayout.CENTER);
+        JPanel computerSpalte = new JPanel(new BorderLayout());
+        JLabel computerText = new JLabel("Computer:", JLabel.CENTER);
+        computerSpalte.add(computerText, BorderLayout.NORTH);
+        this.computerZahlTextField = new JTextField();
         this.computerZahlTextField.setHorizontalAlignment(JTextField.CENTER);
-        this.computerZahlTextField.setFont(computerZahlTextField.getFont().deriveFont(36f));
-        this.computerZahlTextField.setMaximumSize(new Dimension(80, 60));
-        this.computerZahlTextField.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.computerZahlTextField.setFont(computerZahlTextField.getFont().deriveFont(48f));
         computerZahlTextField.setEditable(false);
-        computerSpalte.add(computerZahlTextField);
-
-        JPanel felderReihe = new JPanel();
-        felderReihe.add(eingabeSpalte);
-        felderReihe.add(computerSpalte);
-        unten.add(felderReihe, BorderLayout.NORTH);
-
+        computerSpalte.add(computerZahlTextField, BorderLayout.CENTER);
+        mitte.add(eingabeSpalte);
+        mitte.add(computerSpalte);
+        add(mitte, BorderLayout.CENTER);
         nochMalButton = new JButton("Noch einmal!");
         JPanel buttonReihe = new JPanel();
         buttonReihe.add(nochMalButton);
-        unten.add(buttonReihe, BorderLayout.CENTER);
-
-        add(unten, BorderLayout.CENTER);
-
+        add(buttonReihe, BorderLayout.SOUTH);
         spielerZahlTextField.setActionCommand("Eingabe");
         spielerZahlTextField.addActionListener(controller);
         nochMalButton.setActionCommand("Reset");
